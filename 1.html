@@ -6,26 +6,39 @@
     <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 </head>
 <body>
-    <div ng-app="myApp" ng-controller="myCtrl" ng-init="initName='谢作家'">
+    <div ng-app="myApp" ng-controller="name" ng-init="initName='谢作家'">
 
         名: <input type="text" ng-model="firstName"><br>
         姓: <input type="text" ng-model="lastName"><br>
         <br>
-        姓名: {{firstName + " " + lastName}}
+        姓名: {{result}}
 
-
+        <br>
+        <ul>
+            <li ng-repeat="item in list">{{itemArr}} {{item}} {{count}}</li>
+        </ul>
     </div>
 
-    <div ng-app="" ng-init="a=3;b=4">
-        <p>{{a*b}}</p>
-    </div>
+    <!--<div ng-app="myApp1" ng-controller="calculate">-->
+        <!--<p>{{result}}</p>-->
+    <!--</div>-->
 
     <script>
         var app = angular.module('myApp', []);
-        app.controller('myCtrl', function($scope) {
+        app.controller('name', function($scope,$rootScope) {
             $scope.firstName= "John";
             $scope.lastName= "Doe";
+            $scope.result=$scope.firstName+" "+$scope.lastName;
+
+            $rootScope.itemArr="item";
+            $scope.list=[1,2,3];
         });
+
+
+//        var app1=angular.module('myApp1',[]);
+//        app1.controller('calculate',function ($scope) {
+//            $scope.result=3*4;
+//        });
     </script>
 </body>
 </html>
